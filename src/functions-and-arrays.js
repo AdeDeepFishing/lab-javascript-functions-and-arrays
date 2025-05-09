@@ -69,21 +69,42 @@ function sum(mixedArr) {
 }
 console.log(sum(mixedArr)); // 57
 
-
 // Iteration #4: Calculate the average
 // Level 1: Array of numbers
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
-function averageNumbers() {}
+function averageNumbers(numbersArr) {
+  sumNum=sumNumbers(numbersArr);
+  return sumNum/numbersArr.length;
+}
 
 
 // Level 2: Array of strings
 const wordsArr = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
 
-function averageWordLength() { }
+function averageWordLength(wordsArr) {
+  if (wordsArr.length===0){
+    return null;
+  }
+  let sum=0;
+  for (let i=0;i<wordsArr.length;i++){
+    sum+=wordsArr[i].length;
+  }
+  return sum/wordsArr.length;
+}
+console.log(averageWordLength(wordsArr)); // 5.3
 
 // Bonus - Iteration #4.1
-function avg() {}
+// mixed arr
+function avg(mixedArr) {
+  return sum(mixedArr)/mixedArr.length;
+}
+
+
+const mixedArr111 = [6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10];
+// should return: 5.7
+console.log(avg(mixedArr111)); // 5.7
+
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
@@ -99,10 +120,21 @@ const wordsUnique = [
   'simple',
   'bring'
 ];
+// remove the duplicates, and return a new array
+function uniquifyArray(wordsUniqueArr) {
+  if (wordsUniqueArr.length===0){
+    return null;
+  }
+  let uniqueArr = [];
+  for (let i=0;i<wordsUniqueArr.length;i++){
+    if(uniqueArr.indexOf(wordsUniqueArr[i])===-1){
+      uniqueArr.push(wordsUniqueArr[i]);
+    }
+  }
+  return uniqueArr;
+}
 
-function uniquifyArray() {}
-
-
+console.log(uniquifyArray(wordsUnique));
 
 // Iteration #6: Find elements
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
