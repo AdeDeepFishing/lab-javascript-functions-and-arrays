@@ -208,10 +208,53 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+// What is the greatest product of four adjacent numbers? We consider adjacent any four numbers that are next to each other horizontally or vertically.
+function greatestProduct(matrix) {
+  let maxProduct = 0;
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      if (j + 3 < matrix[i].length) {
+        let product = matrix[i][j] * matrix[i][j + 1] * matrix[i][j + 2] * matrix[i][j + 3];
+        if (product > maxProduct) {
+          maxProduct = product;
+        }
+      }
+      if (i + 3 < matrix.length) {
+        let product = matrix[i][j] * matrix[i + 1][j] * matrix[i + 2][j] * matrix[i + 3][j];
+        if (product > maxProduct) {
+          maxProduct = product;
+        }
+      }
+    }
+  }
+  return maxProduct;
+}
+console.log(greatestProduct(matrix)); // 51267216
 
+//Bonus - Iteration #8.1: Product of diagonals
+// It takes a matrix as a parameter and returns the greatest product of any four values layed out diagonally, in either direction.
+function greatestProductOfDiagonals(matrix){
+  let maxProduct = 0;
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      if (i + 3 < matrix.length && j + 3 < matrix[i].length) {
+        let product = matrix[i][j] * matrix[i + 1][j + 1] * matrix[i + 2][j + 2] * matrix[i + 3][j + 3];
+        if (product > maxProduct) {
+          maxProduct = product;
+        }
+      }
+      if (i - 3 >= 0 && j + 3 < matrix[i].length) {
+        let product = matrix[i][j] * matrix[i - 1][j + 1] * matrix[i - 2][j + 2] * matrix[i - 3][j + 3];
+        if (product > maxProduct) {
+          maxProduct = product;
+        }
+      }
+    }
+  }
+  return maxProduct;
+}
 
-
+console.log(greatestProductOfDiagonals(matrix)); // 70600674
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
