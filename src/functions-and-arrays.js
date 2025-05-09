@@ -1,25 +1,73 @@
 // Iteration #1: Find the maximum
-function maxOfTwoNumbers() {}
-
+// takes two numbers as arguments and returns the largest
+function maxOfTwoNumbers(num1, num2) {
+  if (num1 >= num2) {
+    return num1;
+  } else{
+    return num2;
+  } 
+}
 
 
 // Iteration #2: Find longest word
+// takes as an argument an array of words and returns the longest one. If there are 2 with the same length, it should return the first occurrence.
 const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
 
-function findLongestWord() {}
+function findLongestWord(wordsArr) {
+  if (wordsArr.length===0){
+    return null;
+  }
+  let longestWord = wordsArr[0];
+  for (let i=1;i<wordsArr.length;i++){
+    if (wordsArr[i].length>longestWord.length){
+      longestWord = wordsArr[i];
+    }
+  }
+  return longestWord;
+}
 
 
 
 // Iteration #3: Calculate the sum
+// iterating over an array and adding each of the elements together.
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
-function sumNumbers() {}
+function sumNumbers(numbersArr) {
+  if (numbersArr.length===0){
+    return 0;
+  }
+  let sum=0;
+  for (let i=0;i<numbersArr.length;i++){
+    sum+=numbersArr[i];
+  }
+}
 
 
 
 // Iteration #3.1 Bonus:
-function sum() {}
+// calculates the sum for array filled with (almost) any type of data. Note that strings should have their length added to the total, and boolean values should be coerced into their corresponding numeric values. 
 
+const mixedArr = [6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10];
+// should return: 57
+// 6+12+5+1+1+5+3+6+8+10 = 57
+
+function sum(mixedArr) {
+  if (mixedArr.length===0){
+    return 0;
+  }
+  let sum=0;
+  for (let i=0;i<mixedArr.length;i++){
+    if (typeof mixedArr[i] === 'string'){
+      sum+=mixedArr[i].length;
+    } else if (typeof mixedArr[i] === 'boolean'){
+      sum+=Number(mixedArr[i]);
+    } else if (typeof mixedArr[i] === 'number'){
+      sum+=mixedArr[i];
+    }
+  }
+  return sum;
+}
+console.log(sum(mixedArr)); // 57
 
 
 // Iteration #4: Calculate the average
